@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: web
+  name: web
+spec:
+  containers:
+  - image: nginx
+    name: web
+    volumeMounts:
+    - name: compartido
+      mountPath: /usr/share/nginx/html
+  
+  - image: busybox
+    name: busybox-container
+    command:
+      - sleep
+      - "3600"
+    volumeMounts:
+    - name: compartido
+      mountPath: /pod-data
+  volumes:
+  - name: compartido
+    emptyDir: {}
+
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}

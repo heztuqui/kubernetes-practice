@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busy2
+  name: busy2
+  namespace: myns
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - echo hello world
+    - kubectll
+    - run
+    - busy3
+    - --image=busybox
+    - --restart=Never
+    - --namespace=myns
+    - -o
+    - yaml
+    - --dry-run=client
+    - --
+    - /bin/sh
+    - -c
+    - echo hello world
+    image: busybox
+    name: busy2
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
