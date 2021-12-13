@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+  labels:
+    nginx-deploy: test
+    type: frontend
+
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: app
+      labels:
+        app: nginx-deploy
+        type: frontend
+
+
+    spec:
+      containers:
+      - image:  web
+        name:  busybox
+  selector:
+     matchLabels:
+      type: frontend
+
+      

@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    name: frontend
+    frontend: tier
+
+spec:
+  replicas: 3
+  template:
+    metadata:
+     name: app
+     labels:
+      app: frontend  
+  selector:
+    matchLabels: 
+      frontend: tier 

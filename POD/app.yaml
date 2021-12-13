@@ -1,0 +1,113 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"app":"myapp-frontrend","tier":"frontend"},"name":"myapp","namespace":"default"},"spec":{"containers":[{"image":"busybox","name":"busybox"}]}}
+  creationTimestamp: "2021-12-03T08:02:56Z"
+  labels:
+    app: myapp-frontrend
+    tier: frontend
+  name: myapp
+  namespace: default
+  resourceVersion: "94159"
+  uid: f7998a6a-99fd-4852-a124-4c09c7e041d8
+spec:
+  containers:
+  - image: busybox
+    imagePullPolicy: Always
+    name: busybox
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-96bf8
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: docker-desktop
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-96bf8
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2021-12-03T08:02:56Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2021-12-03T08:02:56Z"
+    message: 'containers with unready status: [busybox]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2021-12-03T08:02:56Z"
+    message: 'containers with unready status: [busybox]'
+    reason: ContainersNotReady
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2021-12-03T08:02:56Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://a19a542fe485fcf8670b2dffc2dbafd34d1d3003cd7e0a50003251d0a7ba70a1
+    image: busybox:latest
+    imageID: docker-pullable://busybox@sha256:52817dece4cfe26f581c834d27a8e1bcc82194f914afe6d50afad5a101234ef1
+    lastState:
+      terminated:
+        containerID: docker://a19a542fe485fcf8670b2dffc2dbafd34d1d3003cd7e0a50003251d0a7ba70a1
+        exitCode: 0
+        finishedAt: "2021-12-05T19:39:03Z"
+        reason: Completed
+        startedAt: "2021-12-05T19:39:03Z"
+    name: busybox
+    ready: false
+    restartCount: 282
+    started: false
+    state:
+      waiting:
+        message: back-off 5m0s restarting failed container=busybox pod=myapp_default(f7998a6a-99fd-4852-a124-4c09c7e041d8)
+        reason: CrashLoopBackOff
+  hostIP: 192.168.65.4
+  phase: Running
+  podIP: 10.1.0.10
+  podIPs:
+  - ip: 10.1.0.10
+  qosClass: BestEffort
+  startTime: "2021-12-03T08:02:56Z"

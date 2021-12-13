@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: app1
+  labels: 
+    app1: production
+spec:
+  containers:
+    - name: busybox
+      image: busybox
+      ports: 
+        - containerPort: 80
+      envFrom:
+        - configMapRef:
+            name: definion-secret
+             

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    app: myapp
+    type: frontend
+
+spec:
+  template:
+    metadata:
+      name: app
+      labels:
+        app: myapp
+        type: frontend
+    spec:
+      containers:
+        - image:  server_web
+          name:  nginx
+          env:
+              - name:  MYPASSWORD
+                value: secrectpassword
+  selector:
+    matchLabels:
+      type: frontend

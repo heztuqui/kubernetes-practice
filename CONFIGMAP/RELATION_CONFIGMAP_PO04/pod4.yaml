@@ -1,0 +1,13 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: pod-3
+containers:
+  name: pod-3
+  image: nginx
+  envFrom:
+    ConfiMapRef:
+      - name: configmap-4
+      
+    
+      

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: app
+  labels:
+    app: frontend
+    frontend: db
+spec:
+  replicas: 2 
+  template:
+    metadata:
+      name: app
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name:  nginx-container
+          image: nginx
+          env:
+          - name:  PASSWORD
+            value: misecret
+
+  selector:
+    matchLabels:
+      nginx: frontend  

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  labels: 
+    ns: pod
+  name: app-pod-ns
+  namespace: test      
+spec:
+  containers:
+    - name: pod
+      image: nginx
+      ports:
+        - containerPort= 80
+      resources:
+        cpu:

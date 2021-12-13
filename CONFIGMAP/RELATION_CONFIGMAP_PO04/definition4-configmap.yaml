@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-4
+data:
+  VALOR4:  pod4
+  VALOR4_01:  Pod_0401
+  
+

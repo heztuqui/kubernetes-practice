@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  labels:
+    app: frontend
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+
+  securityContext:
+    capabilites:
+      add: ["SYS_TIME"]
+resources:
+
