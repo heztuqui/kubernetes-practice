@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-pod1
+  labels:
+    app: tier
+  spec:
+    volumes:
+    - name: share-data
+      emptyDir: {}
+        
+    containers:
+    - name: pod1
+      image: nginx
+      volumeMounts:
+      - name: share-data
+        mountPath: /usr/share/nginx/html
+      command: ["/bin/sh"]
+      args: ["-c", "echo hello multicontainer > /usr/share/html/intex.html"]
+    - name: pod2
+      image: nginx
+      volumeMounts:
+      - name:  share-data
+        mountPath: /usr/share/nginx/html
+    

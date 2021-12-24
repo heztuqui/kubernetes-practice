@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-command
+  labels:
+    liveness: apiVersion
+spec:
+  containers:
+    - name: myapp
+      image: <Image>
+      containerPort: 
+        - port: 80
+  livenessProbe:
+    exec:    
+      command:
+        - cat
+        - /app/is/healthy
+  resources:
+
+
+  
+

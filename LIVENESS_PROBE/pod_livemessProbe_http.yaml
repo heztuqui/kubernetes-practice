@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod1
+  labels:
+    prove: liveness-pod1
+spec:
+  containers:
+    - name: liveness-http
+      image: nginx
+      containerPort:
+        - port: 80
+  livenessProbe:
+    httpGet: /healthy
+    port: 8080
+  resources:
+
+
+

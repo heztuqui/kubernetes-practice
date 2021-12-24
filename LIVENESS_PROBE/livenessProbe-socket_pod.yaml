@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-socket
+  labels:
+    socket: pod-1
+spec:
+  containers:
+    - name: socket-pod1
+      image: nginx
+      containerPort:
+        - port: 80
+      livenessProbe: 
+        tcpSocket:
+          port: 3306
+  resources:
+

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-example-app1
+  labels:
+    type: frontend
+spec:
+  replicas: 3
+  template:
+    metadata: 
+      name: app
+      labels:
+        type: frontend 
+    spec:
+      containers:
+          - name: pod-ingress
+            image: nginx
+            ports: 
+              - containerPort: 80
+  resources:
+    
+  
+  selector:
+    matchLabels:
+      type: frontend
+  
